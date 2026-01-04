@@ -17,7 +17,7 @@ class UserController(
     private val saveUserUseCase: SaveUserUseCase
 ) {
 
-    @PostMapping("/test")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun saveUser(
         @RequestBody body: SaveUserRequest
