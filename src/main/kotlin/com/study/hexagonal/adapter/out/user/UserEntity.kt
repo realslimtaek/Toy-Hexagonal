@@ -1,5 +1,7 @@
 package com.study.hexagonal.adapter.out.user
 
+import com.study.hexagonal.common.enums.Gender
+import com.study.hexagonal.common.enums.Status
 import jakarta.persistence.*
 import org.hibernate.annotations.UpdateTimestamp
 import org.springframework.data.annotation.CreatedDate
@@ -24,12 +26,13 @@ class UserEntity(
     @Column(name = "AGE", nullable = false, columnDefinition = "int(2)", comment = "나이")
     var age: Int,
 
-    @Column(name = "GENDER", nullable = false, columnDefinition = "varchar(1)", comment = "성별")
-    var gender: String,
-
-    @Column(name = "STATUS", nullable = false, columnDefinition = "ENUMERATED")
+    @Column(name = "GENDER", nullable = false, columnDefinition = "ENUM('MALE', 'FEMALE')", comment = "성별")
     @Enumerated(EnumType.STRING)
-    var status: UserStatus,
+    var gender: Gender,
+
+    @Column(name = "STATUS", nullable = false, columnDefinition = "ENUM('ACTIVE', 'RESIGN') DEFAULT 'ACTIVE'", comment = "사용자 상태")
+    @Enumerated(EnumType.STRING)
+    var status: Status = Status.ACTIVE,
 
     @CreatedDate
     @Column(
@@ -49,8 +52,3 @@ class UserEntity(
     ) var updatedAt: LocalDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul")),
 
 )
-
-enum class UserStatus {
-    ACTIVE,
-    RESIGN
-}
