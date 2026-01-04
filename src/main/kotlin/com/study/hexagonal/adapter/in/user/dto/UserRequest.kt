@@ -1,6 +1,7 @@
 package com.study.hexagonal.adapter.`in`.user.dto
 
 import com.study.hexagonal.common.enums.Gender
+import com.study.hexagonal.common.enums.exception.BusinessValidationException
 
 interface SaveUserCommand {
 
@@ -15,7 +16,7 @@ class SaveUserRequest(
     override val gender: Gender
 ) : SaveUserCommand {
     init {
-        require(this.age > 7) { "7세 이하는 가입할 수 없습니다." }
-        require(this.name.length <= 5) { "이름은 5자 이하여야 합니다." }
+        require(this.age > 7) { throw BusinessValidationException("7세 이하는 가입할 수 없습니다.") }
+        require(this.name.length <= 5) { throw BusinessValidationException("이름은 5자 이하여야 합니다.") }
     }
 }
