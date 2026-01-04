@@ -1,3 +1,8 @@
 package com.study.hexagonal.application.port.out.user
 
-interface SaveUserPort
+import com.study.hexagonal.adapter.`in`.user.dto.SaveUserCommand
+
+interface SaveUserPort {
+
+    fun saveUser(req: SaveUserCommand)
+}

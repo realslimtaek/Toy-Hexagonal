@@ -18,7 +18,7 @@ class UserEntity(
         nullable = false,
         columnDefinition = "bigint(11)"
     )
-    var id: Long,
+    var id: Long?,
 
     @Column(name = "NAME", nullable = false, columnDefinition = "varchar(5)", comment = "사용자 명")
     var name: String,
