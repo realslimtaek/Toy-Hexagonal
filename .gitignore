@@ -5,6 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### not shwoing things ###
+config/
+
 ### STS ###
 .apt_generated
 .classpath
