@@ -20,3 +20,17 @@ class SaveUserRequest(
         require(this.name.length <= 5) { throw BusinessValidationException("이름은 5자 이하여야 합니다.") }
     }
 }
+
+interface RenameUserCommand {
+    val id: Long
+    val name: String
+}
+
+class RenameUserRequest(
+    override val id: Long,
+    override val name: String
+) : RenameUserCommand {
+    init {
+        require(this.name.length <= 5) { throw BusinessValidationException("이름은 5자 이하여야 합니다.") }
+    }
+}

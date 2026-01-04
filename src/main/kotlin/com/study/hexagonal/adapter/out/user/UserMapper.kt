@@ -17,16 +17,23 @@ object UserMapper {
             status = Status.ACTIVE
         )
 
-    fun toDomain(entities: List<UserEntity>): List<UserDomain> =
-        entities.map {
-            UserDomain(
-                id = it.id!!,
-                name = it.name,
-                age = it.age,
-                gender = it.gender,
-                status = it.status,
-                createdAt = it.createdAt,
-                updatedAt = it.updatedAt
-            )
-        }
+    fun toEntity(domain: UserDomain): UserEntity =
+        UserEntity(
+            id = domain.id,
+            name = domain.name,
+            age = domain.age,
+            gender = domain.gender,
+            status = domain.status
+        )
+
+    fun toDomain(entity: UserEntity): UserDomain = UserDomain(
+        id = entity.id!!,
+        name = entity.name,
+        age = entity.age,
+        gender = entity.gender,
+        status = entity.status,
+        createdAt = entity.createdAt,
+        updatedAt = entity.updatedAt
+    )
+
 }

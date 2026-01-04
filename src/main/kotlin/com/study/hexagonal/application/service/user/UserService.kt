@@ -1,5 +1,6 @@
 package com.study.hexagonal.application.service.user
 
+import com.study.hexagonal.adapter.`in`.user.dto.RenameUserCommand
 import com.study.hexagonal.adapter.`in`.user.dto.SaveUserCommand
 import com.study.hexagonal.application.port.`in`.user.GetUserUseCase
 import com.study.hexagonal.application.port.`in`.user.SaveUserUseCase
@@ -20,6 +21,18 @@ class UserService(
 
     override fun saveUser(req: SaveUserCommand) {
         saveUserPort.saveUser(req)
+    }
+
+    override fun renameUser(req: RenameUserCommand) {
+        getUserPort.getUser(req.id)
+            .run { this.rename(req.name) }
+            .run (saveUserPort::save)
+    }
+
+    override fun resignUser(id: Long) {
+        getUserPort.getUser(id)
+            .run { this.resign() }
+            .run (saveUserPort::save)
     }
 
     override fun getUsers(status: Status) =

@@ -6,4 +6,6 @@ import com.study.hexagonal.domain.user.UserDomain
 interface GetUserPort {
 
     fun getUsers(status: Status): List<UserDomain>
+
+    fun getUser(id: Long): UserDomain
 }
