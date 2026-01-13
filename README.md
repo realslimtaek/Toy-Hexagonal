@@ -61,7 +61,7 @@ com.study.hexagonal
 
 이 프로젝트의 핵심 도메인 모델은 `domain` 패키지에 정의되어 있으며, 외부 프레임워크나 라이브러리에 의존하지 않는 순수한 POJO(Plain Old Java Object) 또는 Kotlin Data Class로 작성됩니다.
 
-특히, 데이터만 담고 있는 '빈약한 도메인 모델(Anemic Domain Model)'이 아닌, **데이터와 관련된 비즈니스 행위를 함께 포함하는 '풍부한 도메인 모델(Rich Domain Model)'**을 지향합니다.
+특히, 데이터만 담고 있는 '빈약한 도메인 모델(Anemic Domain Model)'이 아닌, **데이터와 관련된 비즈니스 행위를 함께 포함하는 '풍부한 도메인 모델(Rich Domain Model)'** 을 지향합니다.
 
 ### UserDomain
 
